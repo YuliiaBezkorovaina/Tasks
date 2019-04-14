@@ -8,7 +8,8 @@ public class Model {
     public Model(){
         this.listAbonents = new LinkedList<Abonent>();
     }
-    public void recordAbonent(Abonent abonent){
+
+    public void addAbonent(Abonent abonent){
         this.listAbonents.add(abonent);
     }
 
@@ -17,7 +18,7 @@ public class Model {
      * @param searchFIO ім'я абонента, якого потрібно знайти
      * @return знайденого абонента або null
      */
-    public Abonent getAbonent(FIO searchFIO){
+    public Abonent searchAbonent(FIO searchFIO){
         if((listAbonents == null) || (listAbonents.isEmpty())) return null;
         for(Iterator<Abonent> iterator = listAbonents.iterator(); iterator.hasNext();){
             Abonent currentAbonent = iterator.next();
@@ -25,4 +26,11 @@ public class Model {
         }
         return null;
     }
+
+    /**
+     *
+     * @return всіх абонентів, або null
+     */
+    public Abonent getAbonent(){ //TO-DO
+        return listAbonents.getFirst();}
 }

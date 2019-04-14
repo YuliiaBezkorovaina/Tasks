@@ -55,4 +55,14 @@ public class FIO {
     public int hashCode() {
         return Objects.hash(firstName, lastName, middleName, nickName);
     }
+
+    @Override
+    public String toString() {
+        return "FIO{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", nickName='" + nickName + '\'' +
+                '}';
+    }
 }
