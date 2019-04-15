@@ -63,8 +63,11 @@ public class InputInfo {
     System.out.println(View.bundle.getString("NICK_NAME"));
     currentValue = scaner.nextLine();
 try{
-    if (currentValue.equals(DAOtest.valueOf("Yuliia").getLogin()))
-    throw new AbonentEx("error login as nickname",currentValue);
+    for (DAOtest logins:  DAOtest.values() ) {
+        if (currentValue.equals(logins.getLogin()))
+            throw new AbonentEx("error login as nickname",currentValue);
+    }
+
 }
 catch (AbonentEx ex){
     System.out.println("Error login" + ex.getLogingData());
