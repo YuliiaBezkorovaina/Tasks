@@ -9,6 +9,15 @@ import task4.view.View;
 import java.util.Scanner;
 
 public class InputInfo {
+    public enum DAOtest {
+        Yuliia("Юлія", "Миколаївна", "Безкоровайна", "BYN", "+380636844393", "0444521514", "6"),
+        Maxim("Максим", "Володимирович", "Ляшенко", "MVL", "+380677777777", "0444517852", "5");
+        private String login;
+        DAOtest(String firstName, String middleName, String lastName, String nickName, String mobyPhone, String homePhome, String building) {
+            this.login = nickName;
+        }
+        public String getLogin(){return this.login;}
+    }
     Scanner scaner;
     Abonent currentAbonent = new Abonent();
 
@@ -23,7 +32,7 @@ public class InputInfo {
         return currentAbonent;
 }
 
-private FIO inputFIO(){
+   private FIO inputFIO(){
         FIO fio = new FIO();
         String currentValue;
 
@@ -53,10 +62,19 @@ private FIO inputFIO(){
 
     System.out.println(View.bundle.getString("NICK_NAME"));
     currentValue = scaner.nextLine();
-
+try{
+    if (currentValue.equals(DAOtest.valueOf("Yuliia").getLogin()))
+    throw new AbonentEx("error login as nickname",currentValue);
+}
+catch (AbonentEx ex){
+    System.out.println("Error login" + ex.getLogingData());
+}
+finally {
     if (currentValue.matches(Regex.NICK_NAME))
         fio.setNickName(currentValue);
     else fio.setNickName("null");
+
+}
 
     return fio;
 }
